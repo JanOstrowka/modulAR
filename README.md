@@ -1,15 +1,8 @@
-<div style="float: left; padding: 16px">
-<svg width="196" height="196" viewBox="0 0 196 196" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M49 0C21.938 0 0 21.938 0 49V147C0 174.062 21.938 196 49 196H147C174.062 196 196 174.062 196 147V49C196 21.938 174.062 0 147 0H49Z" fill="#546EF3"/>
-<path d="M32.6821 98C68.7574 98.0083 98.0001 127.256 98.0001 163.333C61.9178 163.333 32.6667 134.082 32.6667 98H32.6821Z" fill="#1E1E1E"/>
-<path d="M32.6667 98.1276C68.8195 98.1276 98.1277 127.436 98.1277 163.589C98.1277 127.436 127.436 98.1276 163.589 98.1276C127.436 98.1276 98.1277 68.8194 98.1277 32.6667C98.1277 68.8194 68.8195 98.1276 32.6667 98.1276Z" fill="#EDE3C9"/>
-<path d="M98.0193 32.6667C134.093 32.6771 163.333 61.9241 163.333 98C127.251 98 98 68.749 98 32.6667C98.0064 32.6667 98.0128 32.6667 98.0193 32.6667Z" fill="#1E1E1E"/>
-</svg>
+<img src="https://user-images.githubusercontent.com/3185243/181126881-33ef77f5-9b48-443d-9fbf-0738a6d74d8e.png" width="196" style="float: left; padding: 16px">
 
-</div>
 <div>
 <h2>modulAR - augmented reality home automation</h2>
-<p>This project will allow you to add IoT capabilities to existing devices, using an ESP8266 module and a Unity based AR application. Communication will happen over MQTT, allowing you to control your devices from anywhere in the world.</p>
+<p>Add IoT capabilities to existing devices, using an ESP8266 module and a Unity based AR application. Communication will happen over MQTT, allowing you to control your devices from anywhere in the world.</p>
 </div>
 
   <br>
@@ -66,6 +59,6 @@ You can also `fork` this repository and submit a pull request, if you would like
    ```
 
 ### Packages used
-- Vuforia ([Vuforia](https://developer.vuforia.com/downloads/sdk#downloadModal))
+- Vuforia ([source](https://developer.vuforia.com/downloads/sdk#downloadModal))
 - Figma To Unity Importer  ([source](https://github.com/ManakhovN/FigmaToUnityImporter))
 - Unity-UI-Rounded-Corners - ([source](https://github.com/kirevdokimov/Unity-UI-Rounded-Corners.git))
