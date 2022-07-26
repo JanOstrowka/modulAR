@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/3185243/181126881-33ef77f5-9b48-443d-9fbf-0738a6d74d8e.png" width="196" style="float: left; padding: 16px">
+<img src="https://user-images.githubusercontent.com/3185243/181126881-33ef77f5-9b48-443d-9fbf-0738a6d74d8e.png" width="196" align="left" style="padding: 16px">
 
 <div>
 <h2>modulAR - augmented reality home automation</h2>
