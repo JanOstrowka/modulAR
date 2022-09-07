@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/3185243/181126881-33ef77f5-9b48-443d-9fbf-0738a6d74d8e.png" width="196" align="left" style="padding: 16px">
+<img src="https://user-images.githubusercontent.com/3185243/188761469-24204cc4-f75a-4975-a3b5-6369ee1d6a12.png" width="196" align="left" style="padding: 16px">
 
 <div>
 <h2>modulAR - augmented reality home automation</h2>
@@ -18,6 +18,13 @@
 - [Packages used](#packages-used)
   <br>
   <br> 
+### The video
+<a href="url">
+<img style="display: block; margin-right: auto; width: 100%; max-width: 600px; border-radius: 16px;" src="https://media.giphy.com/media/TwPYTOvWlrlj2YOjbP/giphy.gif">
+<p>▶️ click here to play the video</p>
+</a>
+<br>
+<br>
 
 ### List of parts
 | quantity | name                   |
@@ -29,17 +36,21 @@
 <br>
 
 ### Circuit Diagram
-<img src="https://user-images.githubusercontent.com/3185243/181097852-c3fe0e63-619b-417d-9925-6258d9180513.png" width="100%" style="max-width: 600px;">
+<img style="display: block; margin-right: auto; width: 100%; max-width: 600px" src="https://user-images.githubusercontent.com/3185243/188761839-d1a27435-4fdc-4f5e-afe4-74f4e8287b7e.png">
 <br>
 <br>
 
 ### Casing design
-<img src="none">
+<img style="display: block; margin-right: auto; width: 100%; max-width: 600px" src="https://user-images.githubusercontent.com/3185243/188761962-6837f404-8dfc-4d1d-9698-b898735ffdb9.png">
+
+design files of the 3D models are available in the [models folder](./models)
 <br>
 <br>
 
 ### App Prototype
-<img src="none">
+<img style="display: block; margin-right: auto; width: 100%; max-width: 600px" src="https://user-images.githubusercontent.com/3185243/188762207-20f18844-89f2-471f-8288-6c50bc15be31.png">
+
+download the latest version of the app from [here](.builds/modulAR.apk)
 <br>
 <br>
 
