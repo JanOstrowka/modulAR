@@ -18,10 +18,10 @@
 - [Contributing](#contributing)
   <br>
   <br> 
-### The video
-<a href="url">
+### Video overview
+<a href="./video/modulAR.mp4">
 <img style="display: block; margin-right: auto; width: 100%; max-width: 600px; border-radius: 16px;" src="https://media.giphy.com/media/TwPYTOvWlrlj2YOjbP/giphy.gif">
-<p>▶️ click here to play the video</p>
+<p>▶️ click here to play the full video</p>
 </a>
 <br>
 <br>
