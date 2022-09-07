@@ -3,7 +3,8 @@
 <div>
 <h2>modulAR - augmented reality home automation</h2>
 <p>Add IoT capabilities to existing devices, using an ESP8266 module and a Unity based AR application. Communication will happen over MQTT, allowing you to control your devices from anywhere in the world.</p>
-<p>*inspired by an amazing <a href="https://www.frolicstudio.com/portfolio/smartians/">Smartians</a> project form <a href="https://www.frolicstudio.com/">FROLIC studio</a></p>
+<p>Credits: <a href="https://claudia.mazzuca.com/">Claudia Mazzuca</a>, <a href="https://www.linkedin.com/in/giulia-daleo/">Giulia D’Aleo</a>, <a href="https://github.com/JanOstrowka">Jan Ostrówka</a></p>
+<p>*inspired by an amazing <a href="https://www.frolicstudio.com/portfolio/smartians/" target="_blank">Smartians</a> project form <a href="https://www.frolicstudio.com/" target="_blank">FROLIC studio</a></p>
 </div>
 
   <br>
@@ -15,7 +16,6 @@
 - [Casing design](#casing-design)
 - [App Prototype](#app-prototype)
 - [Contributing](#contributing)
-- [Packages used](#packages-used)
   <br>
   <br> 
 ### The video
@@ -48,7 +48,7 @@ design files of the 3D models are available in the [models folder](./models)
 <br>
 
 ### App Prototype
-<img style="display: block; margin-right: auto; width: 100%; max-width: 600px" src="https://user-images.githubusercontent.com/3185243/188762207-20f18844-89f2-471f-8288-6c50bc15be31.png">
+<img style="display: block; margin-right: auto; width: 100%; max-width: 600px" src="https://user-images.githubusercontent.com/3185243/188765238-c4579408-bdcb-4f12-be6a-9f17a9111f36.png">
 
 download the latest version of the app from [here](.builds/modulAR.apk)
 <br>
@@ -70,7 +70,7 @@ You can also `fork` this repository and submit a pull request, if you would like
    http://arduino.esp8266.com/stable/package_esp8266com_index.json
    ```
 
-### Packages used
+#### Unity packages
 - Vuforia ([source](https://developer.vuforia.com/downloads/sdk#downloadModal))
 - Figma To Unity Importer  ([source](https://github.com/ManakhovN/FigmaToUnityImporter))
 - Unity-UI-Rounded-Corners - ([source](https://github.com/kirevdokimov/Unity-UI-Rounded-Corners.git))
