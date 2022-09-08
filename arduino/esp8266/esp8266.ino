@@ -28,16 +28,16 @@ int ledState = LOW;
 // notify about the state of the spin
 bool notifyStop = true;
 // stepper motor
-const int stepsPerRevolution = 4096;
+const int stepsPerRevolution = 2048;
 const int oneDegree = stepsPerRevolution / 360;
 const int onePercent = stepsPerRevolution / 100;
 const int motorSpeed = 500;
-const int motorAcceleration = 100;
+const int motorAcceleration = 150;
 // ULN2003 motor driver pins
-#define IN1 4
-#define IN2 3
-#define IN3 2
-#define IN4 1
+#define IN1 2
+#define IN2 5
+#define IN3 3
+#define IN4 6
 // WiFi Network
 const char *ssid = WIFI_SSID;
 const char *password = WIFI_PASSWORD;
@@ -73,10 +73,10 @@ void setup_wifi() {
     WiFi.begin(ssid, password);
     while (WiFi.status() != WL_CONNECTED) {
         delay(400);
-        Serial.print("⏝");
+        Serial.print("-");
         digitalWrite(BUILTIN_LED, LOW);
         delay(1028);
-        Serial.print("⏜");
+        Serial.print("_");
         digitalWrite(BUILTIN_LED, HIGH);
     }
 
@@ -125,14 +125,16 @@ void callback(char *topic, byte *payload, unsigned int length) {
     if (strcmp(topic, topic_motor) == 0) {
         // general spin
         if (message == "spin") {
-            stepper.move(-stepsPerRevolution);
-            client.publish(topic_status, "module 1 - motor spinning");
+            stepper.moveTo(1024);
+            stepper.runToPosition();
+            client.publish(topic_status, "module 1 - motor spinning forward");
             notifyStop = true;
         }
             // half spin
-        else if (message == "half spin" or message == "half" or message == "halfspin") {
-            stepper.move(stepsPerRevolution / 2);
-            client.publish(topic_status, "module 1 - motor is doing half a spin");
+        else if (message == "spin backwards") {
+            stepper.moveTo(-1024);
+            stepper.runToPosition();
+            client.publish(topic_status, "module 1 - motor spinning backwards");
             notifyStop = true;
         }
             // spin by a degree
@@ -140,15 +142,18 @@ void callback(char *topic, byte *payload, unsigned int length) {
             const int angle = message.toInt();
             if (angle >= -360 && angle <= 360 && angle != 0) {
                 stepper.move(angle * oneDegree);
+                stepper.runToPosition();
                 client.publish(topic_status, "module 1 - motor spinning by X°");
                 notifyStop = true;
             } else if (angle == 0) {
                 stepper.moveTo(angle);
+                stepper.runToPosition();
                 client.publish(topic_status, "module 1 - motor has not been moved");
                 notifyStop = false;
             } else if (angle < -360 || angle > 360) {
                 int quotient = angle / 360;
                 stepper.moveTo(quotient * stepsPerRevolution);
+                stepper.runToPosition();
                 client.publish(topic_status, "module 1 - motor spinning by X°");
                 notifyStop = false;
             }
@@ -162,7 +167,7 @@ void callback(char *topic, byte *payload, unsigned int length) {
     // line spacer
     Serial.print("");
     Serial.println();
-    Serial.print(". . . . . . . . . . . .");
+    Serial.print(". . . . . . . . . .");
     Serial.println();
 }
 
@@ -194,8 +199,6 @@ void reconnect() {
             // subscribe
             client.subscribe(topic_led);
             client.subscribe(topic_motor);
-            client.subscribe(topic_motor_degree);
-            client.subscribe(topic_motor_percent);
             client.subscribe(topic_status);
 
             // set the led off
@@ -225,12 +228,14 @@ void motor() {
 }
 
 // main
-void setup() {
+void setup() {   
     Serial.begin(baud);
+    delay(4000);
     setup_wifi();
     pinMode(BUILTIN_LED, OUTPUT);
     client.setServer(mqtt_server, mqtt_port);
     motor();
+    delayMicroseconds(10);
     client.setCallback(callback);
 }
 

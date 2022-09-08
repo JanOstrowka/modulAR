@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="material_pattern" size="1.000000 2.165394" />
+    <ImageTarget name="pattern_module" size="1080.000000 1080.000000" />
+    <ImageTarget name="pattern_body_2" size="1080.000000 1080.000000" />
+    <ImageTarget name="target_3" size="1080.000000 1080.000000" />
+    <ImageTarget name="target_2" size="1080.000000 1169.312988" />
+    <ImageTarget name="target" size="800.000000 400.000000" />
   </Tracking>
 </QCARConfig>

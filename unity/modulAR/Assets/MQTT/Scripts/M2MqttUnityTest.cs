@@ -4,14 +4,14 @@
   _ __ ___   ___   __| |_   _| |  /  \  | |__) |
  | '_ ` _ \ / _ \ / _` | | | | | / /\ \ |  _  /
  | | | | | | (_) | (_| | |_| | |/ ____ \| | \ \  C# Unity script
- |_| |_| |_|\___/ \__,_|\__,_|_/_/    \_\_|  \_\ V15.07.22
+ |_| |_| |_|\___/ \__,_|\__,_|_/_/    \_\_|  \_\ V06.09.22
 
  the following file can:
  ✓ connect to the MQTT broker
  ✓ retain the connection
  ✓ subscribe to the MQTT topic
  ✓ toggle the LED ON and OFF through the messages
- X turn the arm by % send through the messages
+ ✓ turn the arm by % send through the messages
  */
 
 using System;
@@ -60,16 +60,31 @@ namespace M2MqttUnity.Examples
         // LED
         public void LedPublish()
         {
-            client.Publish("IoT/vpp/module/id1/led", System.Text.Encoding.UTF8.GetBytes("toggle"), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
-            Debug.Log("module 1 - LED toggled");
-            AddUiMessage("module 1 - LED toggled");
+            client.Publish("IoT/vpp/module/id3/led", System.Text.Encoding.UTF8.GetBytes("toggle"), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+            Debug.Log("module 3 - LED toggled");
+            AddUiMessage("module 3 - LED toggled");
         }
         // Motor arm
-        public void ArmPublish()
+        public void ArmCW36()
         {
-            client.Publish("IoT/vpp/module/id1/motor", System.Text.Encoding.UTF8.GetBytes("120"), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
-            Debug.Log("module 1 - arm rotated by 120°");
-            AddUiMessage("module 1 - arm rotated by 120°");
+            client.Publish("IoT/vpp/module/id2/motor", System.Text.Encoding.UTF8.GetBytes("36"), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+            Debug.Log("module 2 - arm rotated by 36°");
+            AddUiMessage("module 2 - arm rotated by 36°");
+        }
+        
+        public void ArmCCW36()
+        {
+            client.Publish("IoT/vpp/module/id2/motor", System.Text.Encoding.UTF8.GetBytes("-36"), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+            Debug.Log("module 2 - arm rotated by -36°");
+            AddUiMessage("module 2 - arm rotated by -36°");
+        }
+        
+        // volume slider that sends the volume value to the MQTT broker
+        public void VolumePublish(float volume) {
+            client.Publish("IoT/vpp/module/id1/motor", System.Text.Encoding.UTF8.GetBytes(volume.ToString()),
+                MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+            Debug.Log("module 1 - volume set to " + volume);
+            AddUiMessage("module 1 - volume set to " + volume);
         }
         
         public void SetBrokerAddress(string brokerAddress)
@@ -133,9 +148,18 @@ namespace M2MqttUnity.Examples
         protected override void SubscribeTopics()
         {
             client.Subscribe(new string[] { "IoT/vpp/unity/status" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            // module 1
             client.Subscribe(new string[] { "IoT/vpp/module/id1/status" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
             client.Subscribe(new string[] { "IoT/vpp/module/id1/led" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
             client.Subscribe(new string[] { "IoT/vpp/module/id1/motor" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            // module 2
+            client.Subscribe(new string[] { "IoT/vpp/module/id2/status" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client.Subscribe(new string[] { "IoT/vpp/module/id2/led" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client.Subscribe(new string[] { "IoT/vpp/module/id2/motor" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            // module 3
+            client.Subscribe(new string[] { "IoT/vpp/module/id3/status" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client.Subscribe(new string[] { "IoT/vpp/module/id3/led" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client.Subscribe(new string[] { "IoT/vpp/module/id3/motor" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
         }
 
         protected override void UnsubscribeTopics()
